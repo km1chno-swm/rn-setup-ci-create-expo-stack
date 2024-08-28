@@ -1,9 +1,9 @@
 {
   "expo": {
-    "name": "rn-ci-setup-create-expo-stack",
-    "slug": "rn-ci-setup-create-expo-stack",
+    "name": "rn-setup-ci-create-expo-stack",
+    "slug": "rn-setup-ci-create-expo-stack",
     "version": "1.0.0",
-    "scheme": "rn-ci-setup-create-expo-stack",
+    "scheme": "rn-setup-ci-create-expo-stack",
     "web": {
       "bundler": "metro",
       "output": "static",
@@ -16,7 +16,7 @@
     },
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "automatic",
+    "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -25,28 +25,25 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.kmichno.rncisetupcreateexpostack"
+      "bundleIdentifier": "com.kmichno.rnsetupcicreateexpostack"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.kmichno.rncisetupcreateexpostack"
+      "package": "com.kmichno.rnsetupcicreateexpostack"
     },
     "extra": {
       "router": {
         "origin": false
-      },
-      "eas": {
-        "projectId": "cee4010d-3d18-4778-8e9e-09488c54c51d"
       }
     },
     "runtimeVersion": {
       "policy": "appVersion"
     },
     "updates": {
-      "url": "https://u.expo.dev/cee4010d-3d18-4778-8e9e-09488c54c51d"
+      "url": "https://u.expo.dev/0a526a84-ef57-452b-82b4-59fd0af9e9b3"
     }
   }
 }

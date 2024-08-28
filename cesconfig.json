@@ -1,6 +1,6 @@
 {
-  "cesVersion": "2.11.19",
-  "projectName": "rn-ci-setup-create-expo-stack",
+  "cesVersion": "2.11.22",
+  "projectName": "rn-setup-ci-create-expo-stack",
   "packages": [
     {
       "name": "expo-router",
@@ -10,24 +10,8 @@
       }
     },
     {
-      "name": "nativewindui",
-      "type": "styling",
-      "options": {
-        "selectedComponents": [
-          "action-sheet",
-          "activity-indicator",
-          "activity-view",
-          "avatar",
-          "bottom-sheet",
-          "date-picker",
-          "picker",
-          "progress-indicator",
-          "ratings-indicator",
-          "slider",
-          "text",
-          "toggle"
-        ]
-      }
+      "name": "stylesheet",
+      "type": "styling"
     }
   ],
   "flags": {
@@ -35,12 +19,12 @@
     "noInstall": false,
     "overwrite": false,
     "importAlias": true,
-    "packageManager": "yarn",
+    "packageManager": "npm",
     "eas": false
   },
   "packageManager": {
-    "type": "yarn",
-    "version": "1.22.22"
+    "type": "npm",
+    "version": "10.8.1"
   },
   "os": {
     "type": "Darwin",

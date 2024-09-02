@@ -3,7 +3,7 @@ name: Preview with EAS
 on:
   push:
     branches: [main]
-  pull_request: 
+  pull_request:
     types: [opened, synchronize]
 
 jobs:
@@ -36,14 +36,22 @@ jobs:
       - name: 📦 Install dependencies
         run: npm install
 
-      - name: 🛠️ Create DevClient build if needed
-        uses: expo/expo-github-action/preview-build@main
-        with:
-          
-          command: eas build --profile development --platform all
+      # - name: 🛠️ Create DevClient build if needed
+      #   uses: expo/expo-github-action/preview-build@main
+      #   with:
+      #
+      #     command: eas build --profile development --platform all
+      #
+      # - name: 🚀 Publish update
+      #   uses: expo/expo-github-action/preview@v8
+      #   with:
+      #
+      #     command: eas update --auto --branch ${{ github.event.pull_request.head.ref }}
 
-      - name: 🚀 Publish update
-        uses: expo/expo-github-action/preview@v8
+      - name: Continuously Deploy
+        uses: expo/expo-github-action/continuous-deploy-fingerprint@main
         with:
-          
-          command: eas update --auto --branch ${{ github.event.pull_request.head.ref }}
+          profile: development
+          branch: development
+          # profile: ${{ github.event_name != 'pull_request' && 'production' || 'development' }}
+          # branch: ${{ github.event_name != 'pull_request' && 'production' || 'development' }}

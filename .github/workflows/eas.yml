@@ -1,0 +1,49 @@
+name: Preview with EAS
+
+on:
+  push:
+    branches: [main]
+  pull_request: 
+    types: [opened, synchronize]
+
+jobs:
+  preview-with-eas:
+    name: Preview with EAS
+    runs-on: ubuntu-latest
+    concurrency: fingerprint-${{ github.event_name != 'pull_request' && 'main' || github.run_id }}
+    permissions:
+      contents: read
+      pull-requests: write
+      actions: write
+      packages: write
+    steps:
+      - name: 🔍 Check for EXPO_TOKEN
+        run: |
+          if [ -z "${{ secrets.EXPO_TOKEN }}" ]; then
+            echo "You must provide an EXPO_TOKEN secret linked to this project's Expo account in this repo's secrets. Learn more: https://docs.expo.dev/eas-update/github-actions"
+            exit 1
+          fi
+
+      - name: 🏗 Setup repo
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Setup EAS
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: 📦 Install dependencies
+        run: npm install
+
+      - name: 🛠️ Create DevClient build if needed
+        uses: expo/expo-github-action/preview-build@main
+        with:
+          
+          command: eas build --profile development --platform all
+
+      - name: 🚀 Publish update
+        uses: expo/expo-github-action/preview@v8
+        with:
+          
+          command: eas update --auto --branch ${{ github.event.pull_request.head.ref }}

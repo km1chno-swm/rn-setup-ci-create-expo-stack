@@ -1,7 +1,7 @@
 name: Preview with EAS
 
 on:
-  pull_request: 
+  pull_request:
 
 jobs:
   preview-with-eas:
@@ -32,6 +32,13 @@ jobs:
 
       - name: 📦 Install dependencies
         run: npm install
+
+      - name: Check fingerprint
+        id: fingerprint
+        uses: expo/expo-github-action/fingerprint@main
+
+      - name: Print fingerprint
+        run: echo ${{ steps.fingerprint.outputs.current-fingerprint }}
 
       - name: 🚀 Create Preview with EAS Build and Update
         uses: expo/expo-github-action/continuous-deploy-fingerprint@main

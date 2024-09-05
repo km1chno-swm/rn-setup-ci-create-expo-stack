@@ -3,12 +3,15 @@
   "version": "1.0.0",
   "main": "expo-router/entry",
   "scripts": {
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
     "start": "expo start",
     "lint": "eslint \"**/*.{js,jsx,ts,tsx}\" && prettier -c \"**/*.{js,jsx,ts,tsx,json}\"",
     "format": "eslint \"**/*.{js,jsx,ts,tsx}\" --fix && prettier \"**/*.{js,jsx,ts,tsx,json}\" --write",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "build:debug:android": "npx expo prebuild --npm && cd android && ./gradlew assembleDebug -Dorg.gradle.jvmargs=-Xmx4g",
+    "build:debug:ios": "npx expo prebuild --npm && xcodebuild ONLY_ACTIVE_ARCH=YES -workspace ios/rnsetupcicreateexpostack.xcworkspace -UseNewBuildSystem=YES -scheme rnsetupcicreateexpostack -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build -quiet",
+    "maestro:test": "maestro test --debug-output maestro-debug-output .maestro"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.0",
@@ -31,12 +34,17 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@config-plugins/detox": "^8.0.0",
+    "@types/jest": "^29.5.12",
     "@types/react": "~18.2.45",
     "@typescript-eslint/eslint-plugin": "^7.7.0",
     "@typescript-eslint/parser": "^7.7.0",
+    "detox": "^20.25.6",
     "eslint": "^8.57.0",
     "eslint-config-universe": "^12.0.1",
+    "jest": "^29.7.0",
     "prettier": "^3.2.5",
+    "ts-jest": "^29.2.5",
     "typescript": "~5.3.3"
   },
   "eslintConfig": {

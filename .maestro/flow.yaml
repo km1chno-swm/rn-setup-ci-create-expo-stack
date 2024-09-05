@@ -1,0 +1,6 @@
+# flow.yaml
+
+appId: com.kmichno.rnsetupcicreateexpostack
+---
+- launchApp
+- assertVisible: 'Show Details AAA'

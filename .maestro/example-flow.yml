@@ -6,3 +6,4 @@ appId: com.kmichno.rnsetupcicreateexpostack
 - extendedWaitUntil:
     visible: 'Show Details'
     timeout: 60000
+- assertNotVisible: 'Continue'

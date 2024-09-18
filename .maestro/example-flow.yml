@@ -1,0 +1,9 @@
+# example-flow.yaml
+
+appId: com.kmichno.rnsetupcicreateexpostack
+---
+- launchApp
+- extendedWaitUntil:
+    visible: 'Show Details'
+    timeout: 60000
+- assertNotVisible: 'Continue'
